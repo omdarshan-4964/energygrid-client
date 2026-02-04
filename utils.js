@@ -35,8 +35,20 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/**
+ * Get formatted range string for batch display
+ * @param {Array} array - Array of items
+ * @returns {string} Formatted range string (e.g., "SN-000 to SN-009")
+ */
+function getBatchRange(array) {
+  if (!array || array.length === 0) return '';
+  if (array.length === 1) return array[0];
+  return `${array[0]} to ${array[array.length - 1]}`;
+}
+
 module.exports = {
   generateSignature,
   chunkArray,
-  sleep
+  sleep,
+  getBatchRange
 };
